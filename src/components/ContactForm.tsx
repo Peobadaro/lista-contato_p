@@ -70,10 +70,10 @@ const Button = styled.button`
 
 interface ContactFormProps {
   editingContact?: Contact;
-  onSubmit?: () => void;
+  onEditComplete?: () => void;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ editingContact, onSubmit }) => {
+const ContactForm: React.FC<ContactFormProps> = ({ editingContact, onEditComplete }) => {
   const [formData, setFormData] = useState<Omit<Contact, 'id'>>({
     name: editingContact?.name || '',
     email: editingContact?.email || '',
@@ -98,7 +98,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ editingContact, onSubmit }) =
     }
 
     setFormData({ name: '', email: '', phone: '' });
-    if (onSubmit) onSubmit();
+    if (onEditComplete) onEditComplete();
   };
 
   return (
